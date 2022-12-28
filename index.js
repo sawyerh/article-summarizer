@@ -1,11 +1,12 @@
-import { Readability } from "@mozilla/readability";
-import { JSDOM } from "jsdom";
 import { Configuration, OpenAIApi } from "openai";
-import inquirer from "inquirer";
-import dotenv from "dotenv";
+import { JSDOM } from "jsdom";
+import { Readability } from "@mozilla/readability";
 import cliSpinners from "cli-spinners";
+import dotenv from "dotenv";
+import inquirer from "inquirer";
 import { oraPromise } from "ora";
 
+// Load .env file
 dotenv.config();
 
 const openai = new OpenAIApi(
@@ -14,12 +15,14 @@ const openai = new OpenAIApi(
   })
 );
 
+/**
+ * Get all of the inputs (URL, prompts)
+ */
 const url = process.argv[2];
 if (!url) {
   console.error("Pass a URL as the last argument");
   process.exit(1);
 }
-
 const customPromptChoice = "[Custom prompt]";
 const answers = await inquirer.prompt([
   {
@@ -43,15 +46,20 @@ const answers = await inquirer.prompt([
   },
 ]);
 
-const prompt = answers.customPrompt ?? answers.prompt;
+/**
+ * Get the main content of the URL
+ */
 const dom = await JSDOM.fromURL(url);
 const article = new Readability(dom.window.document).parse();
-
 if (!article) {
   console.error("Couldn't parse the URL");
   process.exit(1);
 }
 
+/**
+ * Run the prompt and URL's content through OpenAI's API
+ */
+const prompt = answers.customPrompt ?? answers.prompt;
 const content = article.content.replace(/\n/g, " ");
 const oraOptions = {
   spinner: cliSpinners.earth,
