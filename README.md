@@ -2,6 +2,7 @@
 
 1. Setup an [OpenAI API key](https://beta.openai.com/)
 1. Add an `.env` file with an `OPENAI_KEY`
+1. Make sure you're using Node v18+
 1. `npm install`
 
 ## Usage

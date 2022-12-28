@@ -5,6 +5,9 @@
   "scripts": {
     "x": "node index.js"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@mozilla/readability": "^0.4.2",
     "cli-spinners": "^2.7.0",
