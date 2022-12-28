@@ -1,0 +1,21 @@
+{
+  "name": "article-summarizer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "x": "node index.js"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.4.2",
+    "cli-spinners": "^2.7.0",
+    "dotenv": "^16.0.3",
+    "inquirer": "^9.1.4",
+    "jsdom": "^20.0.3",
+    "openai": "^3.1.0",
+    "ora": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^20.0.1",
+    "@types/node": "^18.11.18"
+  }
+}
