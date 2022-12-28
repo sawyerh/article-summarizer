@@ -45,7 +45,6 @@ const answers = await inquirer.prompt([
       "Summarize the following",
       "List 10 key takeaways",
       "List all entities, grouped by type or category",
-      "List all other URLs mentioned",
       "Write an abstract for the following",
       customPromptChoice,
     ],
