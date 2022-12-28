@@ -43,7 +43,7 @@ const answers = await inquirer.prompt([
     message: "Select prompt:",
     choices: [
       "Summarize the following",
-      "List key takeaways",
+      "List 10 key takeaways",
       "List all entities, grouped by type or category",
       "List all other URLs mentioned",
       "Write an abstract for the following",

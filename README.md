@@ -11,3 +11,5 @@ Run the following where `http://example.com` is the URL you want to run prompts 
 ```sh
 npm run x http://example.com
 ```
+
+![Screenshot](./screenshot.png)
