@@ -12,7 +12,8 @@
     "inquirer": "^9.1.4",
     "jsdom": "^20.0.3",
     "openai": "^3.1.0",
-    "ora": "^6.1.2"
+    "ora": "^6.1.2",
+    "yoctocolors": "^1.0.0"
   },
   "devDependencies": {
     "@types/jsdom": "^20.0.1",
