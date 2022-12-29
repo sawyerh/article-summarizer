@@ -42,10 +42,10 @@ const answers = await inquirer.prompt([
     name: "prompt",
     message: "Select prompt:",
     choices: [
-      "Summarize the following",
+      "Summarize this",
       "List 10 key takeaways",
       "List all entities, grouped by type or category",
-      "Write an abstract for the following",
+      "Write an abstract for this",
       customPromptChoice,
     ],
   },
@@ -70,11 +70,9 @@ const response = await oraPromise(
   openai.createCompletion({
     model: "text-davinci-003",
     prompt: `${prompt}:\n\n${content}`,
-    temperature: 0.7,
+    // 0.1 provides more straightforward and consistent responses. Higher numbers provides more diverse responses.
+    temperature: 0.1,
     max_tokens: 500,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
   }),
   oraOptions
 );
