@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "allowJs": true,
+    "noImplicitAny": false,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "NodeNext",
+    "strict": true,
+    "target": "ES2022"
+  }
+}
