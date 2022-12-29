@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "x": "node index.js"
+    "x": "node src/index.js"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/jsdom": "^20.0.1",
-    "@types/node": "^18.11.18"
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
   }
 }
