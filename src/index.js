@@ -28,4 +28,6 @@ const completion = await getCompletion({
   combinationPrompt,
 });
 
+logger.success("Response ⤵️ ");
+
 logger.log(completion);

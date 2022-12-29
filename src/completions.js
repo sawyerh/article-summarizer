@@ -43,6 +43,9 @@ function chunkTheContent(content) {
     }
     chunk += sentence + " ";
   }
+
+  if (chunks.length === 0) return [content];
+
   return chunks;
 }
 
