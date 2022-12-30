@@ -84,6 +84,12 @@ export async function getCompletion({ content, prompt, combinationPrompt }) {
     .map((r) => r.data.choices[0].text)
     .join("\n----\n");
 
+  logger.info("Responses for all chunks ⤵️ ");
+  console.log(combinedCompletions);
+  logger.warn(
+    `Since the page's content was so long, the prompt had to be ran against chunks of the content. The following response is formed by running a combination prompt against all ${chunks.length} of the chunks' responses above.`
+  );
+
   const finalCompletion = await oraPromise(
     createCompletion(
       `${combinationPrompt}:\n\n###${combinedCompletions}\n\n###`
@@ -92,10 +98,6 @@ export async function getCompletion({ content, prompt, combinationPrompt }) {
       spinner: cliSpinners.moon,
       text: "Combining responses...",
     }
-  );
-
-  logger.warn(
-    `Since the page's content was so long, the following response is formed by running a combination prompt against a series of responses (${chunks.length}) to smaller chunks of the content.`
   );
 
   return finalCompletion.data.choices[0].text;
