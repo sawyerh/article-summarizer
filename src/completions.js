@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Configuration, OpenAIApi } from "openai";
 import cliSpinners from "cli-spinners";
 import { oraPromise } from "ora";
@@ -16,15 +17,25 @@ async function createCompletion(prompt, model = "text-davinci-003") {
     })
   );
 
-  const response = await openai.createCompletion({
-    prompt,
-    model,
-    // 0.1 provides more straightforward and consistent responses. Higher numbers provides more diverse responses.
-    temperature: 0.1,
-    max_tokens: 500,
-  });
+  try {
+    const response = await openai.createCompletion({
+      prompt,
+      model,
+      // 0.1 provides more straightforward and consistent responses. Higher numbers provides more diverse responses.
+      temperature: 0.1,
+      max_tokens: 500,
+    });
 
-  return response;
+    return response;
+  } catch (error) {
+    if (axios.default.isAxiosError(error) && error.response) {
+      logger.error("Error getting completion:");
+      logger.error(error.response.data.error?.message);
+    } else {
+      throw error;
+    }
+    process.exit(1);
+  }
 }
 
 /**
