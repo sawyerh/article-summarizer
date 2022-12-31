@@ -44,7 +44,7 @@ async function createCompletion(prompt, model = "text-davinci-003") {
  * the API's max token limit
  */
 function chunkTheContent(content) {
-  const maxChunkSize = 3500 * 4; // ~1 token = 4 characters
+  const maxChunkSize = 2000 * 4; // ~1 token = 4 characters
   const chunks = [];
   let chunk = "";
   for (const sentence of content.split(/(?<=[.?!])\s+/)) {
