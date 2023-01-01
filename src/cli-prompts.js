@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 
 const customPromptChoice = "[Custom prompt]";
+// TODO: Take inspiration from https://github.com/jerryjliu/gpt_index/blob/main/gpt_index/prompts/default_prompts.py
 const prompts = [
   {
     prompt: "Summarize this",
