@@ -47,9 +47,16 @@ export async function runCliPrompts() {
   ]);
 
   const prompt = answers.customPrompt ?? answers.prompt;
-  const combinationPrompt =
-    answers.customCombinationPrompt ??
-    prompts.find((p) => p.prompt === prompt)?.combinationPrompt;
+  const combinationPrompt = answers.customPrompt
+    ? answers.customCombinationPrompt
+    : prompts.find((p) => p.prompt === prompt)?.combinationPrompt;
 
-  return { prompt, combinationPrompt };
+  const selectedPrompts = {
+    prompt,
+    combinationPrompt:
+      // Allow skipping the custom combination prompt
+      combinationPrompt ? combinationPrompt : prompt,
+  };
+
+  return selectedPrompts;
 }
